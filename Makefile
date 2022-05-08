@@ -38,7 +38,12 @@ BUILD_DIR = build
 C_SOURCES =  \
 Src/main.c \
 Src/stm32f1xx_it.c \
+Src/stm32f1xx_hal.c \
+Src/stm32f1xx_hal_cortex.c \
 Src/stm32f1xx_hal_msp.c \
+Src/stm32f1xx_hal_gpio.c \
+Src/stm32f1xx_hal_rcc.c \
+Src/system_stm32f1xx.c \
 Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c
 
 # ASM sources
@@ -101,7 +106,7 @@ C_INCLUDES =  \
 -IDrivers/STM32F1xx_HAL_Driver/Inc/Legacy \
 -IDrivers/CMSIS/Device/ST/STM32F1xx/Include \
 -IDrivers/CMSIS/Include
--IDrivers/CMSIS/Include
+#-IDrivers/CMSIS/Include
 
 
 # compile gcc flags

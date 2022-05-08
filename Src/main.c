@@ -22,7 +22,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -50,6 +50,13 @@
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
+#ifdef __GNUC__
+int _write(int fd, char* ptr, int len)
+{
+  HAL_UART_Transmit(&huart1, (uint8_t*)ptr, len, 0xFFFF);
+  return len;
+}
+#endif
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -89,7 +96,8 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  printf("startup\r\n");
+  int i = 0;
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -97,8 +105,24 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
     /* USER CODE BEGIN 3 */
+    HAL_GPIO_WritePin(GPIOB, LED_G_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOB, LED_G_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+
+    HAL_GPIO_WritePin(GPIOB, LED_B_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOB, LED_B_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+
+    HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_SET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+    i++;
+    printf("iter %d\r\n", i);
   }
   /* USER CODE END 3 */
 }
