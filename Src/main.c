@@ -107,20 +107,20 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    HAL_GPIO_WritePin(GPIOB, LED_G_Pin, GPIO_PIN_SET);
-    HAL_Delay(1000);
     HAL_GPIO_WritePin(GPIOB, LED_G_Pin, GPIO_PIN_RESET);
     HAL_Delay(1000);
-
-
-    HAL_GPIO_WritePin(GPIOB, LED_B_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOB, LED_G_Pin, GPIO_PIN_SET);
     HAL_Delay(1000);
+
+
     HAL_GPIO_WritePin(GPIOB, LED_B_Pin, GPIO_PIN_RESET);
     HAL_Delay(1000);
-
-    HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(GPIOB, LED_B_Pin, GPIO_PIN_SET);
     HAL_Delay(1000);
+
     HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_RESET);
+    HAL_Delay(1000);
+    HAL_GPIO_WritePin(GPIOB, LED_R_Pin, GPIO_PIN_SET);
     HAL_Delay(1000);
     i++;
     printf("iter %d\r\n", i);
