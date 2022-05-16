@@ -15,4 +15,14 @@ int _write(int fd, char *ptr, int len)
     }
     return len;
 }
+
+int _read(int fd, char *ptr, int len)
+{
+    if(print_uart_handle != NULL)
+    {
+        HAL_UART_Receive(print_uart_handle, (uint8_t *)ptr, len, 0xFFFF);
+    }
+    return len;
+}
+
 #endif
